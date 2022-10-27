@@ -13,9 +13,11 @@ while i <= 9:
     if i % 2 == 0:
         ход = 'Xод №', i, 'Нолика'
         znak = 'O'
+        wic = 'Победа ноликов'
     else:
         ход = 'Xод №', i, 'Крестик'
         znak = '*'
+        wic = 'Победа крестиков'
 
     print(ход)
     x = int(input("ВВедит строчку 1 - 3:")) - 1
@@ -69,11 +71,11 @@ while i <= 9:
     stat8O = (Tabl[0][2] == Tabl[1][2] == Tabl[2][2]) and Tabl[0][2] == 'O'  # 3 столбец
 
     statO = stat1O or stat2O or stat3O or stat4O or stat5O or stat6O or stat7O or stat8O
-    if statx:
-        print('бинго')
+    if statx or statO:
+        print('Бинго ', wic)
         i += 10
     else:
-        print('не выиграл')
+        print('факап')
         i += 1
 
 exit()
