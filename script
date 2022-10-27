@@ -1,0 +1,79 @@
+# вводная часть
+banner = [ 1, 2, 3]
+Tabl = [['_', '_', '_'], [ '_', '_', '_'], ['_', '_', '_']]
+print('Да начнется битва')
+print(' ', ' '.join(map(str, banner)))
+print('1', ' '.join(map(str, Tabl[0])))
+print('2', ' '.join(map(str, Tabl[1])))
+print('3', ' '.join(map(str, Tabl[2])))
+i = 1
+while i <= 9:
+
+    print(' ')
+    if i % 2 == 0:
+        ход = 'Xод №', i, 'Нолика'
+        znak = 'O'
+    else:
+        ход = 'Xод №', i, 'Крестик'
+        znak = '*'
+
+    print(ход)
+    x = int(input("ВВедит строчку 1 - 3:")) - 1
+    y = int(input("ВВедит столбик 1 - 3:")) - 1
+    z = 0
+
+
+    while z < 1:
+        if 0 <= x <= 2 and 0 <= y <= 2:
+            if Tabl[x][y] == '_':
+                Tabl[x][y] = znak
+                z = 2
+            else:
+                print(' ')
+                print('не корректные координы позиция занята')
+                print(ход)
+                x = int(input("ВВедит строчку 1 -3:")) - 1
+                y = int(input("ВВедит столбик 1 -3:")) - 1
+                z = 0
+        else:
+            print(' ')
+            print('не корректные координы')
+            print(ход)
+            print('Xод №', i, 'Крестик')
+            x = int(input("ВВедит строчку 1 -3:")) - 1
+            y = int(input("ВВедит столбик 1 -3:")) - 1
+            z = 0
+
+    print(' ', ' '.join(map(str, banner)))
+    print('1', ' '.join(map(str, Tabl[0])))
+    print('2', ' '.join(map(str, Tabl[1])))
+    print('3', ' '.join(map(str, Tabl[2])))
+
+    stat1x = (Tabl[0][0] == Tabl[1][1] == Tabl[2][2]) and Tabl[0][0] == '*'  # \
+    stat2x = (Tabl[0][0] == Tabl[0][1] == Tabl[0][2]) and Tabl[0][0] == '*'  # 1 строка
+    stat3x = (Tabl[1][0] == Tabl[1][1] == Tabl[1][2]) and Tabl[1][0] == '*'  # 2 строка
+    stat4x = (Tabl[2][0] == Tabl[2][1] == Tabl[2][2]) and Tabl[2][0] == '*'  # 3 строка
+    stat5x = (Tabl[2][0] == Tabl[1][1] == Tabl[0][2]) and Tabl[2][0] == '*'  # /
+    stat6x = (Tabl[0][0] == Tabl[1][0] == Tabl[2][0]) and Tabl[0][0] == '*'  # 1 столбец
+    stat7x = (Tabl[0][1] == Tabl[1][1] == Tabl[2][1]) and Tabl[0][1] == '*'  # 2 столбец
+    stat8x = (Tabl[0][2] == Tabl[1][2] == Tabl[2][2]) and Tabl[0][2] == '*'  # 3 столбец
+    statx = stat1x or stat2x or stat3x or stat4x or stat5x or stat6x or stat7x or stat8x
+
+    stat1O = (Tabl[0][0] == Tabl[1][1] == Tabl[2][2]) and Tabl[0][0] == 'O'  # \
+    stat2O = (Tabl[0][0] == Tabl[0][1] == Tabl[0][2]) and Tabl[0][0] == 'O'  # 1 строка
+    stat3O = (Tabl[1][0] == Tabl[1][1] == Tabl[1][2]) and Tabl[1][0] == 'O'  # 2 строка
+    stat4O = (Tabl[2][0] == Tabl[2][1] == Tabl[2][2]) and Tabl[2][0] == 'O'  # 3 строка
+    stat5O = (Tabl[2][0] == Tabl[1][1] == Tabl[0][2]) and Tabl[2][0] == 'O'  # /
+    stat6O = (Tabl[0][0] == Tabl[1][0] == Tabl[2][0]) and Tabl[0][0] == 'O'  # 1 столбец
+    stat7O = (Tabl[0][1] == Tabl[1][1] == Tabl[2][1]) and Tabl[0][1] == 'O'  # 2 столбец
+    stat8O = (Tabl[0][2] == Tabl[1][2] == Tabl[2][2]) and Tabl[0][2] == 'O'  # 3 столбец
+
+    statO = stat1O or stat2O or stat3O or stat4O or stat5O or stat6O or stat7O or stat8O
+    if statx:
+        print('бинго')
+        i += 10
+    else:
+        print('не выиграл')
+        i += 1
+
+exit()
